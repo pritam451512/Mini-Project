@@ -24,6 +24,7 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: "https://spendora-app-yjqm.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));//frontend se connect krega syd
 

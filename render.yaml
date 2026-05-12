@@ -1,4 +1,10 @@
- redirects:
-  - source: /*
-    destination: /index.html
-    status: 200
+ services:
+  - type: web
+    name: spendora-app
+    env: static
+    buildCommand: cd Frontend && npm install && npm run build
+    staticPublishPath: ./Frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

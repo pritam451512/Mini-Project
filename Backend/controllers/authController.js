@@ -113,17 +113,17 @@ Date.now() +
 otpAttempts:0
 })
 
-await transporter.sendMail({
-from:
-process.env.EMAIL,
-to: emailId,
-subject:
-"Spendora Email Verification",
-html: `
-<h2>Your OTP is ${otp}</h2>
-<p>Valid for 10 minutes</p>
-`
-})
+// await transporter.sendMail({
+// from:
+// process.env.EMAIL,
+// to: emailId,
+// subject:
+// "Spendora Email Verification",
+// html: `
+// <h2>Your OTP is ${otp}</h2>
+// <p>Valid for 10 minutes</p>
+// `
+// })
 
 res.status(201).json({
 message:

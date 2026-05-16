@@ -104,16 +104,16 @@ password,
 
 const otp =generateOtp()
 
-await transporter.sendMail({
-from: "Spendora <spendora.verify@gmail.com>",
-to: emailId,
-subject:
-"Spendora Email Verification",
-html: `
-<h2>Your OTP is ${otp}</h2>
-<p>Valid for 10 minutes</p>
-`
-})
+// await transporter.sendMail({
+// from: "Spendora <spendora.verify@gmail.com>",
+// to: emailId,
+// subject:
+// "Spendora Email Verification",
+// html: `
+// <h2>Your OTP is ${otp}</h2>
+// <p>Valid for 10 minutes</p>
+// `
+// })
 
 await User.create({
   name,

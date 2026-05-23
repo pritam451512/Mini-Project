@@ -135,7 +135,7 @@ function Dashboard() {
 
       <Navbar />
 
-     <div className="max-w-[1600px] mx-auto px-24 md:px-32 lg:px-36 py-8">
+     <div className="max-w-[1600px] mx-auto px-4 md:px-32 lg:px-36 py-8">
 
         {/* Heading */}
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">
@@ -147,7 +147,7 @@ function Dashboard() {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-wrap gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 mb-12">
 
           <button
             onClick={() =>
@@ -155,7 +155,7 @@ function Dashboard() {
                 true
               )
             }
-            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg hover:opacity-90 transition cursor-pointer"
+            className="w-full sm:w-auto  px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg hover:opacity-90 transition cursor-pointer"
           >
             + Add Income
           </button>
@@ -166,7 +166,7 @@ function Dashboard() {
                 true
               )
             }
-            className="px-6 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-100 transition cursor-pointer"
+            className=" w-full sm:w-auto  px-6 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-100 transition cursor-pointer"
           >
             + Add Expense
           </button>
@@ -174,7 +174,7 @@ function Dashboard() {
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
 
           {/* Remaining Balance */}
           <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 hover:shadow-lg transition">

@@ -153,11 +153,11 @@ setTimeout(() => {
         {/* Header */}
         <div className="text-center mb-8">
 
-          <h1 className="text-5xl font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent mb-4">
             Spendora
           </h1>
 
-          <h2 className="text-3xl font-bold text-slate-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
             Create Account
           </h2>
 

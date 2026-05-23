@@ -88,6 +88,7 @@ function DashboardCharts({
     finalGroupExpense
 
   return (
+    <div className="overflow-x-auto"> 
     <div className="grid md:grid-cols-3 gap-7 mt-10">
 
       {/* Left Card */}
@@ -265,6 +266,7 @@ function DashboardCharts({
 
       </div>
 
+    </div>
     </div>
   )
 }

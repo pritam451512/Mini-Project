@@ -92,7 +92,7 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm">
 
-      <div className="w-full px-22 md:px-26 lg:px-28 h-20 flex items-center justify-between">
+      <div className="w-full px-4 md:px-26 lg:px-28 h-20 flex items-center justify-between">
 
         {/* Logo */}
         <Link
@@ -120,7 +120,10 @@ function Navbar() {
 
         {/* Nav */}
         <nav className="hidden md:flex items-center gap-10 text-lg">
-
+           <button className="md:hidden text-3xl">
+            ☰
+           </button>
+ 
           <Link
             to="/dashboard"
             className={navLink("/dashboard")}
@@ -167,10 +170,10 @@ function Navbar() {
               <img
                 src={user.photo}
                 alt="profile"
-                className="w-11 h-11 rounded-full object-cover ring-2 ring-cyan-500"
+                className="w-9 h-9 md:w-11 md:h-11rounded-full object-cover ring-2 ring-cyan-500"
               />
             ) : (
-              <div className="w-11 h-11 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold text-lg ring-2 ring-cyan-500">
+              <div className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold text-lg ring-2 ring-cyan-500">
                 {initials}
               </div>
             )}

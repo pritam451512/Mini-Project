@@ -34,7 +34,8 @@ function Navbar() {
 
   const [openMenu, setOpenMenu] =
     useState(false)
-
+const [mobileMenu, setMobileMenu] =
+  useState(false)
   const [user, setUser] =
     useState({
       name: "User",
@@ -120,10 +121,81 @@ function Navbar() {
 
         {/* Nav */}
         <nav className="hidden md:flex items-center gap-10 text-lg">
-           <button className="md:hidden text-3xl">
-            ☰
-           </button>
- 
+           <button
+               onClick={() =>
+                 setMobileMenu(!mobileMenu)
+               }
+               className="md:hidden text-3xl"
+             >
+              ☰
+             </button>
+            {
+mobileMenu && (
+
+<div className="
+absolute
+top-20
+left-0
+w-full
+bg-white
+border-b
+border-slate-200
+shadow-lg
+flex
+flex-col
+items-center
+gap-6
+py-6
+md:hidden
+z-50
+">
+
+  <Link
+    to="/dashboard"
+    onClick={() =>
+      setMobileMenu(false)
+    }
+    className={navLink("/dashboard")}
+  >
+    Dashboard
+  </Link>
+
+  <Link
+    to="/history"
+    onClick={() =>
+      setMobileMenu(false)
+    }
+    className={navLink("/history")}
+  >
+    History
+  </Link>
+
+  <Link
+    to="/budget"
+    onClick={() =>
+      setMobileMenu(false)
+    }
+    className={navLink("/budget")}
+  >
+    Budget
+  </Link>
+
+  <Link
+    to="/groups"
+    onClick={() =>
+      setMobileMenu(false)
+    }
+    className={navLink("/groups")}
+  >
+    Groups
+  </Link>
+
+</div>
+
+)
+}  
+      
+  
           <Link
             to="/dashboard"
             className={navLink("/dashboard")}

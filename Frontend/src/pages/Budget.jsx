@@ -358,8 +358,7 @@ function Budget() {
       <div className="max-w-[1800px] mx-auto px-4 md:px-16 lg:px-24 py-8">
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
-
+       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between items-start gap-4 mb-8 ">
           <h1 className="text-3xl md:text-5xl font-bold">
             Budget
           </h1>
@@ -367,7 +366,7 @@ function Budget() {
           <button
             onClick={handleReset}
             className="
-              w-full sm:w-auto
+              w-auto
               bg-red-500
               text-white
               px-5 py-3

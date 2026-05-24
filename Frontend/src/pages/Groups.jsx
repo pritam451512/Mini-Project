@@ -1,6 +1,6 @@
 // src/pages/Groups.jsx
-// Responsive Version
-// LOGIC NOT CHANGED
+// FULL CORRECT RESPONSIVE FILE
+// LOGIC PRESERVED
 
 import { useEffect, useState } from "react"
 import api from "../api/axios"
@@ -40,16 +40,26 @@ function Groups() {
 
       setLoading(true)
 
-      const res = await api.get("/api/group/info")
+      const res =
+        await api.get(
+          "/api/group/info"
+        )
 
-      setCreatedGroups(res.data.created || [])
-      setJoinedGroups(res.data.joined || [])
+      setCreatedGroups(
+        res.data.created || []
+      )
+
+      setJoinedGroups(
+        res.data.joined || []
+      )
 
     } catch (err) {
 
       console.log(err)
 
-      setMessage("Failed to load groups")
+      setMessage(
+        "Failed to load groups"
+      )
 
     } finally {
 
@@ -58,146 +68,182 @@ function Groups() {
     }
   }
 
-  const handleCreate = async (e) => {
+  const handleCreate =
+    async (e) => {
 
-    e.preventDefault()
+      e.preventDefault()
 
-    try {
+      try {
 
-      setSubmitting(true)
+        setSubmitting(true)
 
-      await api.post("/api/group", {
-        name: groupName.trim()
-      })
+        await api.post(
+          "/api/group",
+          {
+            name:
+              groupName.trim()
+          }
+        )
 
-      setGroupName("")
-      setShowCreate(false)
+        setGroupName("")
+        setShowCreate(false)
 
-      fetchGroups()
+        fetchGroups()
 
-    } catch (err) {
+      } catch (err) {
 
-      console.log(err)
+        console.log(err)
 
-      setMessage(
-        err.response?.data?.message ||
-        "Failed to create group"
-      )
+        setMessage(
+          err.response?.data?.message ||
+          "Failed to create group"
+        )
 
-    } finally {
+      } finally {
 
-      setSubmitting(false)
+        setSubmitting(false)
 
+      }
     }
-  }
 
-  const handleJoin = async (e) => {
+  const handleJoin =
+    async (e) => {
 
-    e.preventDefault()
+      e.preventDefault()
 
-    try {
+      try {
 
-      setSubmitting(true)
+        setSubmitting(true)
 
-      await api.post("/api/group/join", {
-        code: inviteCode.trim()
-      })
+        await api.post(
+          "/api/group/join",
+          {
+            code:
+              inviteCode.trim()
+          }
+        )
 
-      setInviteCode("")
-      setShowJoin(false)
+        setInviteCode("")
+        setShowJoin(false)
 
-      fetchGroups()
+        fetchGroups()
 
-    } catch (err) {
+      } catch (err) {
 
-      console.log(err)
+        console.log(err)
 
-      setMessage(
-        err.response?.data?.message ||
-        "Failed to join group"
-      )
+        setMessage(
+          err.response?.data?.message ||
+          "Failed to join group"
+        )
 
-    } finally {
+      } finally {
 
-      setSubmitting(false)
+        setSubmitting(false)
 
+      }
     }
-  }
 
-  const openGroupDetails = async (id) => {
+  const openGroupDetails =
+    async (id) => {
 
-    try {
+      try {
 
-      const res = await api.get(`/api/group/${id}`)
+        const res =
+          await api.get(
+            `/api/group/${id}`
+          )
 
-      setGroupDetails(res.data)
-      setSelectedGroup(id)
+        setGroupDetails(
+          res.data
+        )
 
-    } catch (err) {
+        setSelectedGroup(id)
 
-      console.log(err)
+      } catch (err) {
 
+        console.log(err)
+
+      }
     }
-  }
 
-  const acceptRequest = async (userId) => {
+  const acceptRequest =
+    async (userId) => {
 
-    try {
+      try {
 
-      await api.post("/api/group/approve", {
-        groupId: selectedGroup,
-        userId
-      })
+        await api.post(
+          "/api/group/approve",
+          {
+            groupId:
+              selectedGroup,
+            userId
+          }
+        )
 
-      openGroupDetails(selectedGroup)
+        openGroupDetails(
+          selectedGroup
+        )
 
-      fetchGroups()
+        fetchGroups()
 
-    } catch (err) {
+      } catch (err) {
 
-      console.log(err)
+        console.log(err)
 
+      }
     }
-  }
 
-  const rejectRequest = async (userId) => {
+  const rejectRequest =
+    async (userId) => {
 
-    try {
+      try {
 
-      await api.post("/api/group/reject", {
-        groupId: selectedGroup,
-        userId
-      })
+        await api.post(
+          "/api/group/reject",
+          {
+            groupId:
+              selectedGroup,
+            userId
+          }
+        )
 
-      openGroupDetails(selectedGroup)
+        openGroupDetails(
+          selectedGroup
+        )
 
-      fetchGroups()
+        fetchGroups()
 
-    } catch (err) {
+      } catch (err) {
 
-      console.log(err)
+        console.log(err)
 
+      }
     }
-  }
 
-  const copyCode = async (code) => {
+  const copyCode =
+    async (code) => {
 
-    try {
+      try {
 
-      await navigator.clipboard.writeText(code)
+        await navigator.clipboard.writeText(
+          code
+        )
 
-      setMessage("Invite code copied")
+        setMessage(
+          "Invite code copied"
+        )
 
-      setTimeout(() => {
-        setMessage("")
-      }, 2000)
+        setTimeout(() => {
+          setMessage("")
+        }, 2000)
 
-    } catch (err) {
+      } catch (err) {
 
-      console.log(err)
+        console.log(err)
 
+      }
     }
-  }
 
   return (
 
@@ -387,15 +433,11 @@ function Groups() {
                             <div className="bg-slate-50 rounded-2xl p-4">
 
                               <p className="text-sm text-slate-500">
-
                                 Members
-
                               </p>
 
                               <p className="text-2xl font-bold mt-1">
-
                                 {group.members.length}
-
                               </p>
 
                             </div>
@@ -403,15 +445,11 @@ function Groups() {
                             <div className="bg-slate-50 rounded-2xl p-4">
 
                               <p className="text-sm text-slate-500">
-
                                 Requests
-
                               </p>
 
                               <p className="text-2xl font-bold mt-1">
-
                                 {group.requests.length}
-
                               </p>
 
                             </div>
@@ -522,9 +560,7 @@ function Groups() {
               <div className="flex justify-between items-center mb-8">
 
                 <h2 className="text-2xl md:text-3xl font-bold">
-
                   Create Group
-
                 </h2>
 
                 <button
@@ -547,17 +583,36 @@ function Groups() {
                   type="text"
                   value={groupName}
                   onChange={(e) =>
-                    setGroupName(e.target.value)
+                    setGroupName(
+                      e.target.value
+                    )
                   }
                   placeholder="Enter group name"
-                  className="w-full px-5 py-4 rounded-2xl border border-slate-300 outline-none focus:border-cyan-500"
+                  className="
+                    w-full
+                    px-5 py-4
+                    rounded-2xl
+                    border
+                    border-slate-300
+                    outline-none
+                    focus:border-cyan-500
+                  "
                   required
                 />
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold"
+                  className="
+                    w-full
+                    py-4
+                    rounded-2xl
+                    bg-gradient-to-r
+                    from-cyan-500
+                    to-blue-600
+                    text-white
+                    font-semibold
+                  "
                 >
 
                   {
@@ -577,8 +632,297 @@ function Groups() {
         )
       }
 
+      {/* JOIN MODAL */}
+      {
+        showJoin && (
+
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
+
+            <div className="
+              bg-white
+              w-full
+              max-w-xl
+              rounded-3xl
+              p-4 md:p-8
+            ">
+
+              <div className="flex justify-between items-center mb-8">
+
+                <h2 className="text-2xl md:text-3xl font-bold">
+                  Join Group
+                </h2>
+
+                <button
+                  onClick={() =>
+                    setShowJoin(false)
+                  }
+                  className="text-3xl"
+                >
+                  ✕
+                </button>
+
+              </div>
+
+              <form
+                onSubmit={handleJoin}
+                className="space-y-5"
+              >
+
+                <input
+                  type="text"
+                  value={inviteCode}
+                  onChange={(e) =>
+                    setInviteCode(
+                      e.target.value
+                    )
+                  }
+                  placeholder="Enter invite code"
+                  className="
+                    w-full
+                    px-5 py-4
+                    rounded-2xl
+                    border
+                    border-slate-300
+                    uppercase
+                    outline-none
+                    focus:border-cyan-500
+                  "
+                  required
+                />
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="
+                    w-full
+                    py-4
+                    rounded-2xl
+                    bg-gradient-to-r
+                    from-cyan-500
+                    to-blue-600
+                    text-white
+                    font-semibold
+                  "
+                >
+
+                  {
+                    submitting
+                      ? "Joining..."
+                      : "Join Group"
+                  }
+
+                </button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        )
+      }
+
+      {/* DETAILS MODAL */}
+      {
+        groupDetails && (
+
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
+
+            <div className="
+              bg-white
+              w-full
+              max-w-2xl
+              rounded-3xl
+              p-4 md:p-8
+              max-h-[90vh]
+              overflow-y-auto
+            ">
+
+              <div className="flex justify-between items-center mb-6">
+
+                <h2 className="text-2xl md:text-3xl font-bold uppercase">
+
+                  {groupDetails.name}
+
+                </h2>
+
+                <button
+                  onClick={() =>
+                    setGroupDetails(null)
+                  }
+                  className="text-3xl"
+                >
+                  ✕
+                </button>
+
+              </div>
+
+              {/* Invite Code */}
+              <div className="
+                flex
+                flex-col
+                sm:flex-row
+                sm:items-center
+                gap-3
+                mb-8
+              ">
+
+                <div className="
+                  w-full
+                  bg-slate-100
+                  px-4 py-3
+                  rounded-2xl
+                  font-semibold
+                  break-all
+                ">
+
+                  {groupDetails.inviteCode}
+
+                </div>
+
+                <button
+                  onClick={() =>
+                    copyCode(
+                      groupDetails.inviteCode
+                    )
+                  }
+                  className="
+                    p-3
+                    rounded-2xl
+                    border
+                    hover:bg-slate-100
+                  "
+                >
+
+                  <FiCopy />
+
+                </button>
+
+              </div>
+
+              <h3 className="text-2xl font-bold mb-5">
+
+                Pending Requests
+
+              </h3>
+
+              {
+                groupDetails.requests.length === 0 ? (
+
+                  <p className="text-slate-500">
+
+                    No requests pending
+
+                  </p>
+
+                ) : (
+
+                  <div className="space-y-4">
+
+                    {
+                      groupDetails.requests.map((user) => (
+
+                        <div
+                          key={user._id}
+                          className="
+                            border
+                            border-slate-200
+                            rounded-2xl
+                            p-5
+                            flex
+                            flex-col
+                            sm:flex-row
+                            gap-4
+                            sm:items-center
+                            sm:justify-between
+                          "
+                        >
+
+                          <p className="font-semibold text-slate-800">
+
+                            {user.name}
+
+                          </p>
+
+                          <div className="
+                            flex
+                            flex-col
+                            sm:flex-row
+                            gap-3
+                            w-full
+                            sm:w-auto
+                          ">
+
+                            <button
+                              onClick={() =>
+                                acceptRequest(
+                                  user._id
+                                )
+                              }
+                              className="
+                                px-4 py-2
+                                rounded-xl
+                                bg-green-600
+                                text-white
+                                flex
+                                items-center
+                                justify-center
+                                gap-2
+                              "
+                            >
+
+                              <FiCheckCircle />
+
+                              Accept
+
+                            </button>
+
+                            <button
+                              onClick={() =>
+                                rejectRequest(
+                                  user._id
+                                )
+                              }
+                              className="
+                                px-4 py-2
+                                rounded-xl
+                                bg-red-500
+                                text-white
+                                flex
+                                items-center
+                                justify-center
+                                gap-2
+                              "
+                            >
+
+                              <FiXCircle />
+
+                              Reject
+
+                            </button>
+
+                          </div>
+
+                        </div>
+
+                      ))
+                    }
+
+                  </div>
+
+                )
+              }
+
+            </div>
+
+          </div>
+
+        )
+      }
+
     </div>
 
   )
 }
+
 export default Groups

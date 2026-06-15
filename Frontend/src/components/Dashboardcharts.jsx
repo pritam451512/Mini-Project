@@ -163,7 +163,7 @@ function DashboardCharts({
           Personal vs Group
         </h2>
 
-        <div className="flex justify-center relative">
+       <div className="flex justify-center relative">
 
   <PieChart
     width={220}
@@ -187,27 +187,35 @@ function DashboardCharts({
     </Pie>
   </PieChart>
 
-  <div className="
-    absolute
-    inset-0
-    flex
-    flex-col
-    items-center
-    justify-center
-    pointer-events-none
-  ">
-    <p className="
-      text-lg
-      md:text-2xl
-      font-bold
-      max-w-[120px]
-      text-center
-      break-words
-    ">
-      ₹{totalExpense.toLocaleString("en-IN")}
+  <div
+    className="
+      absolute
+      inset-0
+      flex
+      flex-col
+      items-center
+      justify-center
+      pointer-events-none
+    "
+  >
+    <p
+      className="
+        text-base
+        md:text-xl
+        font-bold
+        text-center
+        leading-tight
+      "
+    >
+      ₹
+      {grandTotal >= 10000000
+        ? (grandTotal / 10000000).toFixed(1) + "Cr"
+        : grandTotal >= 100000
+        ? (grandTotal / 100000).toFixed(1) + "L"
+        : grandTotal.toLocaleString("en-IN")}
     </p>
 
-    <p className="text-slate-500">
+    <p className="text-slate-500 text-sm">
       Total
     </p>
   </div>
